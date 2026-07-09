@@ -10,7 +10,7 @@ from fileformats.core import extra_implementation, FileSet
 from fileformats.biosig.base import Biosig
 from fileformats.vendor.neuroscan import Neuroscan
 
-from fileformats.extras.biosig.utils import mne_deidentify
+# from fileformats.extras.biosig.utils import mne_deidentify
 
 
 @extra_implementation(FileSet.read_metadata)
