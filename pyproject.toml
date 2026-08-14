@@ -7,10 +7,16 @@ name = "fileformats-vendor-neuroscan"
 description = "Classes for representing different file formats in Python classes for use in type hinting in data workflows"
 readme = "README.md"
 requires-python = ">=3.10"
-dependencies = ["fileformats >= 0.17"]
+dependencies = ["fileformats >= 0.17", "fileformats-biosig >= 0.1"]
 license = { file = "LICENSE" }
-authors = [{ name = "Miao Cao", email = "miaocao@swin.edu.au" }, { name = "Thomas G. Close", email = "tom.g.close@gmail.com" }]
-maintainers = [{ name = "Miao Cao", email = "miaocao@swin.edu.au" }, { name = "Thomas G. Close", email = "tom.g.close@gmail.com" }]
+authors = [
+    { name = "Miao Cao", email = "miaocao@swin.edu.au" },
+    { name = "Thomas G. Close", email = "tom.g.close@gmail.com" },
+]
+maintainers = [
+    { name = "Miao Cao", email = "miaocao@swin.edu.au" },
+    { name = "Thomas G. Close", email = "tom.g.close@gmail.com" },
+]
 keywords = ["file formats", "data"]
 classifiers = [
     "Development Status :: 3 - Alpha",
@@ -65,7 +71,7 @@ select = "C,E,F,W,B,B950"
 extend-ignore = ['E203', 'E501', 'E129']
 
 [tool.mypy]
-python_version = "3.8"
+python_version = "3.10"
 ignore_missing_imports = true
 strict = true
 namespace_packages = true
