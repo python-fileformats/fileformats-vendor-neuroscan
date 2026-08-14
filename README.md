@@ -7,7 +7,7 @@
 [![Latest Version](https://img.shields.io/pypi/v/fileformats-vendor-neuroscan.svg)](https://pypi.python.org/pypi/fileformats-vendor-neuroscan/)
 [![Documentation Status](https://img.shields.io/badge/docs-latest-brightgreen.svg?style=flat)](https://arcanaframework.github.io/fileformats-vendor-neuroscan/)
 
-The extension package of [Fileformats](https://github.com/arcanaframework/fileformats) provides a library of Python classes types for recognising and handling vendor-specific formats for neuroscan EEG files.
+The extension package of [Fileformats](https://github.com/arcanaframework/fileformats) provides a library of Python classes types for recognising and handling NeuroScan EEG formats.
 
 
 ## Quick Installation
