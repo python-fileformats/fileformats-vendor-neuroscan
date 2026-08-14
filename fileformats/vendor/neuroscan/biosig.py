@@ -24,7 +24,7 @@ class NeuroscanDataParameterDPO(File):
 
 class Neuroscan(WithAdjacentFiles, Eeg, BinaryFile):
     """
-    KIT/RIKEN (Ricon) MEG format (directory-based)
+    Neuroscan data
     Required files:
     - Main data file (.cdt)
     Optional files: .cef (events), .pom (sensor position), .dpa (data info)
@@ -33,7 +33,7 @@ class Neuroscan(WithAdjacentFiles, Eeg, BinaryFile):
     ext = ".cdt"
     # alternate_exts = (".con",)
 
-    marker_generic_names = ("marker.mrk", "markers.mrk", "kit.mrk")
+    # marker_generic_names = ("marker.mrk", "markers.mrk", "kit.mrk")
 
     @property
     def event_file(self) -> NeuroscanEvents | None:
