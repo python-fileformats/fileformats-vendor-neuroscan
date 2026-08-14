@@ -2,38 +2,48 @@ import os
 import re
 import typing as ty
 from pathlib import Path
-import tempfile
 
 import mne.io
-
-from fileformats.core import extra_implementation, FileSet
 from fileformats.biosig.base import Biosig
+from fileformats.core import FileSet, extra_implementation
+
 from fileformats.vendor.neuroscan import Neuroscan
 
 # from fileformats.extras.biosig.utils import mne_deidentify
 
 
 @extra_implementation(FileSet.read_metadata)
-def neuroscan_read_metadata(cdt_fname: str, **kwargs: ty.Any) -> ty.Mapping[str, ty.Any]:
+def neuroscan_read_metadata(
+    cdt_fname: str, **kwargs: ty.Any
+) -> ty.Mapping[str, ty.Any]:
     return mne.io.read_raw_curry(fname=cdt_fname, preload=False, verbose=False).info.to_json_dict()  # type: ignore[no-any-return]
 
 
 @extra_implementation(Biosig.deidentify)
 def neuroscan_deidentify(
-    dpa_fname: str,
-    dpo_fname: str,
+    neuroscan: Neuroscan,
+    out_dir: os.PathLike[str],
     spec: ty.Any = None,
-    out_dir: os.PathLike[str] | None = None,
-):
-    out_dir = Path(tempfile.mkdtemp() if out_dir is None else out_dir)
-    out_dir.mkdir(parents=True, exist_ok=True)
-    if dpa_fname is not None:
-        clear_comments_filehistory(input_path=dpa_fname, output_path=dpa_fname, overwrite=True)
-    if dpo_fname is not None:
-        clear_comments_filehistory(input_path=dpo_fname, output_path=dpo_fname, overwrite=True)
-    
+    **kwargs: ty.Any,
+) -> Neuroscan:
+    deidentified = neuroscan.copy(Path(out_dir))
+    clear_comments_filehistory(
+        deidentified.data_parameter_file,
+        overwrite=True,
+    )
+    if deidentified.data_parameter_DPO_file is not None:
+        clear_comments_filehistory(
+            deidentified.data_parameter_DPO_file,
+            overwrite=True,
+        )
+    return deidentified
 
-def clear_comments_filehistory(input_path: str, output_path: str = None, overwrite: bool = False):
+
+def clear_comments_filehistory(
+    input_path: os.PathLike[str],
+    output_path: os.PathLike[str] | None = None,
+    overwrite: bool = False,
+) -> None:
     """
     Clear all content after "Comments = " and "FileHistory = " in dpa text file
     :param input_path: Path of the original input dpa txt file

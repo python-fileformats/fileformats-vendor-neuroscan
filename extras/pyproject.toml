@@ -9,19 +9,19 @@ readme = "README.md"
 requires-python = ">=3.11"
 dependencies = [
     "fileformats >= 0.17",
-    "pydra >= 1.0a9"
+    "pydra >= 1.0a9",
+    "fileformats-biosig-extras >= 0.1",
 ]
-license = {file = "LICENSE"}
+license = { file = "LICENSE" }
 authors = [
-    {name = "<YOUR-NAME>", email = "<YOUR-EMAIL>"},
+    { name = "Miao Cao", email = "miaocao@swin.edu.au" },
+    { name = "Thomas G. Close", email = "tom.g.close@gmail.com" },
 ]
 maintainers = [
-    {name = "<YOUR-NAME>", email = "<YOUR-EMAIL>"},
+    { name = "Miao Cao", email = "miaocao@swin.edu.au" },
+    { name = "Thomas G. Close", email = "tom.g.close@gmail.com" },
 ]
-keywords = [
-    "file formats",
-    "data",
-]
+keywords = ["file formats", "data"]
 classifiers = [
     "Development Status :: 3 - Alpha",
     "Environment :: Console",
@@ -39,29 +39,17 @@ classifiers = [
 dynamic = ["version"]
 
 [project.optional-dependencies]
-dev = [
-    "black",
-    "pre-commit",
-    "codespell",
-    "flake8",
-    "flake8-pyproject",
-]
-test = [
-    "pytest >=6.2.5",
-    "pytest-env>=0.6.2",
-    "pytest-cov>=2.12.1",
-    "codecov",
-]
+dev = ["black", "pre-commit", "codespell", "flake8", "flake8-pyproject"]
+test = ["pytest >=6.2.5", "pytest-env>=0.6.2", "pytest-cov>=2.12.1", "codecov"]
 
-converters = [
-]
+converters = []
 
 [project.urls]
 repository = "https://github.com/ArcanaFramework/fileformats-vendor-neuroscan"
 
 [tool.hatch.version]
 source = "vcs"
-raw-options = {root = ".."}
+raw-options = { root = ".." }
 
 [tool.hatch.build.hooks.vcs]
 version-file = "fileformats/extras/vendor/neuroscan/_version.py"
@@ -78,9 +66,7 @@ ignore-words = ".codespell-ignorewords"
 
 [tool.flake8]
 doctests = true
-per-file-ignores = [
-    "__init__.py:F401"
-]
+per-file-ignores = ["__init__.py:F401"]
 max-line-length = 88
 select = "C,E,F,W,B,B950"
 extend-ignore = ['E203', 'E501', 'E129']

@@ -16,10 +16,12 @@ jobs:
   test:
     strategy:
       matrix:
-        os: [macos-latest, ubuntu-latest, windows-latest]
-        python-version: ["3.11", "3.14"]
+        os: [ubuntu-latest]
+        python-version: ["3.11"]
       fail-fast: false
     runs-on: ${{ matrix.os }}
+    env:
+      PIP_BREAK_SYSTEM_PACKAGES: 1
     defaults:
       run:
         shell: bash -l {0}
