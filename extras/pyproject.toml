@@ -8,9 +8,9 @@ description = "Extra methods for accessing and manipulating the underlying data 
 readme = "README.md"
 requires-python = ">=3.11"
 dependencies = [
-    "fileformats >= 0.17",
+    "fileformats >= 0.19.0",
     "pydra >= 1.0a9",
-    "fileformats-biosig-extras >= 0.1",
+    "fileformats-biosig-extras >= 0.3.0",
 ]
 license = { file = "LICENSE" }
 authors = [

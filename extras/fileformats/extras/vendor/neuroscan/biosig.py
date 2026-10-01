@@ -23,7 +23,7 @@ def neuroscan_read_metadata(
 def neuroscan_deidentify(
     neuroscan: Neuroscan,
     out_dir: os.PathLike[str],
-    spec: ty.Any = None,
+    recipe: None = None,
     **kwargs: ty.Any,
 ) -> Neuroscan:
     deidentified = neuroscan.copy(Path(out_dir))
